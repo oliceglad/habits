@@ -1,5 +1,8 @@
 window.addEventListener('DOMContentLoaded', function () {
 
+  var button = document.getElementById('add_modal');
+  var modal = document.getElementById('modal');
+
   function initialState() {
 		if (localStorage.getItem('habit') == null) {
 			$('.habit__none').show();
@@ -133,9 +136,6 @@ window.addEventListener('DOMContentLoaded', function () {
   document.getElementById('date').innerHTML = dateTime();
 
   // modal 
-
-  var button = document.getElementById('add_modal');
-  var modal = document.getElementById('modal');
 
   button.onclick = function() {
     modal.style.display = 'block';
