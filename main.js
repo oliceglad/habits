@@ -3,6 +3,8 @@ window.addEventListener('DOMContentLoaded', function () {
   var button = document.getElementById('add_modal');
   var modal = document.getElementById('modal');
 
+
+  // Инициализация памяти 
   function initialState() {
 		if (localStorage.getItem('habit') == null) {
 			$('.habit__none').show();
@@ -14,11 +16,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
 	initialState();
 
+  // Добавляем в память компьютера данные 
   function addToStorage() {
 		let content = $('.habit__list').html();
 		localStorage.setItem('habit', content);
 	}
 
+  // Добавляем привычку
   function addHabit(enter) {
     var habit = $('input').val()
 
@@ -97,7 +101,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-
+  // Удаляем привычку
   function deleteItem(item) {
     item.remove()
     var items = $('.habit__list-item')
@@ -110,9 +114,10 @@ window.addEventListener('DOMContentLoaded', function () {
 		}
   }
 
+  // Функция срабатывающая при клике на кнопку с id add_habit
   $('body').on('click', '#add_habit', addHabit);
 
-
+// Функция срабатывающая при клике на кнопку с class habit__delete
   $('body').on('click', '.habit__delete', function(){
 		var item = $(this).parents('.habit__list-item');
 
@@ -133,14 +138,17 @@ window.addEventListener('DOMContentLoaded', function () {
     return day
   }
 
+  // Добавить дату в HTML
   document.getElementById('date').innerHTML = dateTime();
 
   // modal 
 
+  // Функция обработки клика кнопки с плюосом
   button.onclick = function() {
     modal.style.display = 'block';
   }
 
+  // Функция обработки клика свободной области
   window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
@@ -148,7 +156,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  
+  // Функция обработки нажатия клавиши Enter
   $(modal).keyup(function(e) {
     if (e.keyCode == 13) {
       addHabit('enter');
