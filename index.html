@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="main.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="main.js"></script>
+  <script></script>
+</head>
+
+<body>
+
+  <section class="modal" id="modal">
+    <div class="modal__container">
+      <div class="modal__content">
+        <input type="text" placeholder="Введите название привычки">
+        <button type="submit" id="add_habit">Добавить</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="hello">
+    <div class="container">
+      <h1 class="hello__title">
+        Привет!
+      </h1>
+
+      <div class="hello__date" id="date"></div>
+    </div>
+  </section>
+
+  <section class="habit">
+    <div class="container">
+      <div class="habit__panel">
+        <h2 class="habit__panel__title">
+          Ваши привычки:
+        </h2>
+
+        <a href="#" class="us__panel__add" id="add_modal">
+          <svg fill="#000000" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48px" height="48px">
+            <path
+              d="M 12 2 C 6.4889971 2 2 6.4889971 2 12 C 2 17.511003 6.4889971 22 12 22 C 17.511003 22 22 17.511003 22 12 C 22 6.4889971 17.511003 2 12 2 z M 12 4 C 16.430123 4 20 7.5698774 20 12 C 20 16.430123 16.430123 20 12 20 C 7.5698774 20 4 16.430123 4 12 C 4 7.5698774 7.5698774 4 12 4 z M 11 7 L 11 11 L 7 11 L 7 13 L 11 13 L 11 17 L 13 17 L 13 13 L 17 13 L 17 11 L 13 11 L 13 7 L 11 7 z" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="habit__none">
+        Привычек нет, нажмите плюс чтобы добавить
+      </div>
+
+      <ul class="habit__list">
+      </ul>
+    </div>
+  </section>
+</body>
+
+</html>
