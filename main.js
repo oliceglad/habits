@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   var button = document.getElementById('add_modal');
   var modal = document.getElementById('modal');
-
+  var modalContainer = document.getElementById('modalContainer')
 
   // Инициализация памяти 
   function initialState() {
@@ -150,7 +150,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // Функция обработки клика свободной области
   window.onclick = function(event) {
-    if (event.target == modal) {
+    if (event.target == modalContainer) {
       modal.style.display = "none";
       $('input').removeClass('error');
     }
