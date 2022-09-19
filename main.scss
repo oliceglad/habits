@@ -74,12 +74,37 @@ $h1-size: 40px;
 
     &__list {
       &-item {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
         padding: 10px;
-        border: 1px solid black;
+        border: 1px solid $primary-color;
         border-radius: 10px;
+
+
+        &__up {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+        }
+
+        &__list {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 20px;
+
+          &-link {
+            color: black;
+            border: 1px solid $primary-color;
+            border-radius: 10px;
+            padding: 5px;
+            transition: all .3s ease-in-out;
+
+            a {
+              transition: all .3s ease-in-out;
+            }
+          }
+
+        }
 
         &:not(:last-child) {
           margin-bottom: 10px;
@@ -164,4 +189,11 @@ $h1-size: 40px;
 
 .error {
   border: 1px solid red !important;
+}
+
+.on-date-link {
+   a {
+    color: white;
+   }
+  background-color: $primary-color;
 }

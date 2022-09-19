@@ -65,12 +65,30 @@ a {
   margin-top: 20px;
 }
 .habit__list-item {
+  padding: 10px;
+  border: 1px solid blue;
+  border-radius: 10px;
+}
+.habit__list-item__up {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
-  border: 1px solid black;
+}
+.habit__list-item__list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.habit__list-item__list-link {
+  color: black;
+  border: 1px solid blue;
   border-radius: 10px;
+  padding: 5px;
+  transition: all 0.3s ease-in-out;
+}
+.habit__list-item__list-link a {
+  transition: all 0.3s ease-in-out;
 }
 .habit__list-item:not(:last-child) {
   margin-bottom: 10px;
@@ -143,4 +161,11 @@ a {
 
 .error {
   border: 1px solid red !important;
+}
+
+.on-date-link {
+  background-color: blue;
+}
+.on-date-link a {
+  color: white;
 }/*# sourceMappingURL=main.css.map */

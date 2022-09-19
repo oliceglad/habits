@@ -2,25 +2,25 @@ window.addEventListener('DOMContentLoaded', function () {
 
   var button = document.getElementById('add_modal');
   var modal = document.getElementById('modal');
-  var modalContainer = document.getElementById('modalContainer')
+  var modalContainer = document.getElementById('modalContainer');
 
   // Инициализация памяти 
   function initialState() {
-		if (localStorage.getItem('habit') == null) {
-			$('.habit__none').show();
-		} else {
-			$('.habit__none').hide();
-			$('.habit__list').html(localStorage.getItem('habit'));
-		}
-	}
+    if (localStorage.getItem('habit') == null) {
+      $('.habit__none').show();
+    } else {
+      $('.habit__none').hide();
+      $('.habit__list').html(localStorage.getItem('habit'));
+    }
+  }
 
-	initialState();
+  initialState();
 
   // Добавляем в память компьютера данные 
   function addToStorage() {
-		let content = $('.habit__list').html();
-		localStorage.setItem('habit', content);
-	}
+    let content = $('.habit__list').html();
+    localStorage.setItem('habit', content);
+  }
 
   // Добавляем привычку
   function addHabit(enter) {
@@ -32,6 +32,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
       $('.habit__list').append(`
       <li class="habit__list-item">
+        <div class="habit__list-item__up">
           <div class="habit__list-item__text">${habit}</div>
           <a href="#" class="habit__delete">
           <?xml version="1.0" encoding="iso-8859-1"?>
@@ -51,8 +52,19 @@ window.addEventListener('DOMContentLoaded', function () {
             </g>
           </g>
           </svg>
+          </a>
+        </div>
+
+        <ul class='habit__list-item__list'>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Пн</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Вт</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Ср</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Чт</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Пт</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Сб</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Вск</a></li>
+        </ul>
           
-        </a>
       </li>
       `);
 
@@ -60,13 +72,14 @@ window.addEventListener('DOMContentLoaded', function () {
 
       $('.habit__none').hide();
 
-			habit = $('input').val('');
+      habit = $('input').val('');
     } else if ((enter == 'enter') && (habit)) {
       $('input').removeClass('error');
       modal.style.display = 'none';
 
       $('.habit__list').append(`
       <li class="habit__list-item">
+        <div class="habit__list-item__up">
           <div class="habit__list-item__text">${habit}</div>
           <a href="#" class="habit__delete">
           <?xml version="1.0" encoding="iso-8859-1"?>
@@ -86,8 +99,19 @@ window.addEventListener('DOMContentLoaded', function () {
             </g>
           </g>
           </svg>
+          </a>
+        </div>
+
+        <ul class='habit__list-item__list'>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Пн</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Вт</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Ср</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Чт</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Пт</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Сб</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Вск</a></li>
+        </ul>
           
-        </a>
       </li>
       `);
 
@@ -95,8 +119,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
       $('.habit__none').hide();
 
-			habit = $('input').val('');
-    }else {
+      habit = $('input').val('');
+    } else {
       $('input').addClass('error');
     }
   }
@@ -109,21 +133,37 @@ window.addEventListener('DOMContentLoaded', function () {
     addToStorage()
 
     if (items.length == 0) {
-			$('.habit__none').show();
-			localStorage.removeItem('habit');
-		}
+      $('.habit__none').show();
+      localStorage.removeItem('habit');
+    }
+  }
+
+
+  // Добавить стиль для кнопки
+  function addClassDate(item) {
+    for( var i = 0; i < item.length; i++) {
+      item[i].classList.toggle('on-date-link');
+    }
+
+    addToStorage()
   }
 
   // Функция срабатывающая при клике на кнопку с id add_habit
   $('body').on('click', '#add_habit', addHabit);
 
-// Функция срабатывающая при клике на кнопку с class habit__delete
-  $('body').on('click', '.habit__delete', function(){
-		var item = $(this).parents('.habit__list-item');
+  // Функция срабатывающая при клике на кнопку с class habit__delete
+  $('body').on('click', '.habit__delete', function () {
+    var item = $(this).parents('.habit__list-item');
 
     console.log(item)
 
-		deleteItem(item);
+    deleteItem(item);
+  });
+
+  // Функция для того чтобы поставить выполненный день
+  $('body').on('click', '.list-link__a', function(){
+		let item = $(this).parents('.habit__list-item__list-link');
+		addClassDate(item);
 	});
 
 
@@ -143,13 +183,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // modal 
 
-  // Функция обработки клика кнопки с плюосом
-  button.onclick = function() {
+  // Функция обработки клика кнопки с плюсом
+  button.onclick = function () {
     modal.style.display = 'block';
   }
 
   // Функция обработки клика свободной области
-  window.onclick = function(event) {
+  window.onclick = function (event) {
     if (event.target == modalContainer) {
       modal.style.display = "none";
       $('input').removeClass('error');
@@ -157,7 +197,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   // Функция обработки нажатия клавиши Enter
-  $(modal).keyup(function(e) {
+  $(modal).keyup(function (e) {
     if (e.keyCode == 13) {
       addHabit('enter');
     }
