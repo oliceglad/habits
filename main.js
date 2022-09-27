@@ -3,6 +3,23 @@ window.addEventListener('DOMContentLoaded', function () {
   var button = document.getElementById('add_modal');
   var modal = document.getElementById('modal');
   var modalContainer = document.getElementById('modalContainer');
+  var modalAnim = gsap.timeline({paused:true});
+  modalAnim.to('.modal__content', {duration: .3, opacity: 1, y: 0})
+
+  function Animation() {
+    var mainAnim = gsap.timeline({paused:true});
+  
+    mainAnim.to('.hello__date', {duration: 1.3, opacity: 1,  y: 0})
+      .to('.hello__title', {duration: 1.5, opacity: 1})
+      .to('.habit', {duration: 1.15, opacity: 1});
+
+    setTimeout (() => {
+      mainAnim.play()
+    }, 500)
+  }
+
+  Animation()
+
 
   // Инициализация памяти 
   function initialState() {
@@ -28,7 +45,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
     if (habit) {
       $('input').removeClass('error');
-      modal.style.display = 'none';
+
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 400)
+
+      modalAnim.reverse()
 
       $('.habit__list').append(`
       <li class="habit__list-item">
@@ -62,7 +84,7 @@ window.addEventListener('DOMContentLoaded', function () {
           <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Чт</a></li>
           <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Пт</a></li>
           <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Сб</a></li>
-          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Вск</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Вс</a></li>
         </ul>
           
       </li>
@@ -75,7 +97,12 @@ window.addEventListener('DOMContentLoaded', function () {
       habit = $('input').val('');
     } else if ((enter == 'enter') && (habit)) {
       $('input').removeClass('error');
-      modal.style.display = 'none';
+
+      setTimeout(() => {
+        modal.style.display = 'none';
+      }, 400)
+
+      modalAnim.reverse()
 
       $('.habit__list').append(`
       <li class="habit__list-item">
@@ -109,7 +136,7 @@ window.addEventListener('DOMContentLoaded', function () {
           <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Чт</a></li>
           <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Пт</a></li>
           <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Сб</a></li>
-          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Вск</a></li>
+          <li class='habit__list-item__list-link'><a href="#" class='list-link__a'>Вс</a></li>
         </ul>
           
       </li>
@@ -149,7 +176,7 @@ window.addEventListener('DOMContentLoaded', function () {
   }
 
   // Функция срабатывающая при клике на кнопку с id add_habit
-  $('body').on('click', '#add_habit', addHabit);
+  $('body').on('click', '#add_habit',addHabit);
 
   // Функция срабатывающая при клике на кнопку с class habit__delete
   $('body').on('click', '.habit__delete', function () {
@@ -183,15 +210,22 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // modal 
 
+
   // Функция обработки клика кнопки с плюсом
   button.onclick = function () {
     modal.style.display = 'block';
+    setTimeout (() => {
+      modalAnim.play()
+    }, 300)
   }
 
   // Функция обработки клика свободной области
   window.onclick = function (event) {
     if (event.target == modalContainer) {
-      modal.style.display = "none";
+      modalAnim.reverse() 
+      setTimeout (() => {
+        modal.style.display = "none"
+      }, 500)
       $('input').removeClass('error');
     }
   }
@@ -203,5 +237,6 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  
 
 })
