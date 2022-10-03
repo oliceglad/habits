@@ -20,7 +20,6 @@ window.addEventListener('DOMContentLoaded', function () {
 
   Animation()
 
-
   // Инициализация памяти 
   function initialState() {
     if (localStorage.getItem('habit') == null) {
@@ -42,6 +41,8 @@ window.addEventListener('DOMContentLoaded', function () {
   // Добавляем привычку
   function addHabit(enter) {
     var habit = $('input').val()
+
+    var animHabit = gsap.timeline({paused:true});
 
     if (habit) {
       $('input').removeClass('error');
@@ -150,11 +151,17 @@ window.addEventListener('DOMContentLoaded', function () {
     } else {
       $('input').addClass('error');
     }
+
+    animHabit.to('.habit__list-item', {duration: .6, opacity: 1, x: 0})
+
+    setTimeout(() => {
+      animHabit.play()
+    }, 200)
   }
 
   // Удаляем привычку
   function deleteItem(item) {
-    item.remove()
+    item.remove(),200
     var items = $('.habit__list-item')
 
     addToStorage()
@@ -163,6 +170,7 @@ window.addEventListener('DOMContentLoaded', function () {
       $('.habit__none').show();
       localStorage.removeItem('habit');
     }
+
   }
 
 
@@ -180,11 +188,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // Функция срабатывающая при клике на кнопку с class habit__delete
   $('body').on('click', '.habit__delete', function () {
-    var item = $(this).parents('.habit__list-item');
+    var item = $(this).parents('.habit__list-item')
 
-    console.log(item)
-
-    deleteItem(item);
+    deleteItem(item)
   });
 
   // Функция для того чтобы поставить выполненный день

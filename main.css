@@ -76,6 +76,7 @@ a {
   padding: 10px;
   border: 1px solid blue;
   border-radius: 10px;
+  transform: translateX(-1000px);
 }
 .habit__list-item__up {
   display: flex;
