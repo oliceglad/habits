@@ -36,7 +36,10 @@ img {
      object-fit: cover;
 }
 
-p, h1, h2, h3 {
+p,
+h1,
+h2,
+h3 {
   margin: 0;
 }
 
@@ -53,12 +56,29 @@ a {
   padding-right: 10px;
   margin: 0 auto;
 }
+@media (min-width: 768px) {
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (min-width: 1280px) {
+  .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
 
 .hello__title {
   margin-top: 20px;
   text-align: center;
   font-size: 40px;
   opacity: 0;
+}
+@media (min-width: 768px) {
+  .hello__title {
+    font-size: 56px;
+  }
 }
 .hello__date {
   margin-top: 5px;
@@ -67,16 +87,47 @@ a {
   opacity: 0;
   transform: translateY(-100px);
 }
+@media (min-width: 768px) {
+  .hello__date {
+    font-size: 18px;
+  }
+}
 
 .habit {
   margin-top: 20px;
   opacity: 0;
 }
+.habit__delete svg g g path {
+  transition: all 0.3s ease-in-out;
+}
+.habit__delete:hover svg g g path {
+  fill: grey;
+}
+@media (min-width: 636px) {
+  .habit__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+@media (min-width: 768px) {
+  .habit__list {
+    justify-content: center;
+  }
+}
+@media (min-width: 768px) {
+  .habit__list {
+    justify-content: start;
+  }
+}
 .habit__list-item {
   padding: 10px;
   border: 1px solid blue;
   border-radius: 10px;
-  transform: translateX(-1000px);
+}
+@media (min-width: 768px) {
+  .habit__list-item__text {
+    font-size: 18px;
+  }
 }
 .habit__list-item__up {
   display: flex;
@@ -99,13 +150,62 @@ a {
 .habit__list-item__list-link a {
   transition: all 0.3s ease-in-out;
 }
+@media (min-width: 410px) {
+  .habit__list-item__list {
+    justify-content: start;
+  }
+  .habit__list-item__list-link:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+@media (min-width: 636px) {
+  .habit__list-item__list-link:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+@media (min-width: 988px) {
+  .habit__list-item__list {
+    width: 100%;
+    min-width: 400px;
+  }
+}
 .habit__list-item:not(:last-child) {
   margin-bottom: 10px;
+}
+@media (min-width: 524px) {
+  .habit__list-item:not(:last-child) {
+    margin-bottom: 25px;
+  }
+}
+@media (min-width: 636px) {
+  .habit__list-item:last-child {
+    margin-bottom: 25px;
+  }
+}
+@media (min-width: 636px) {
+  .habit__list-item:nth-child(odd) {
+    margin-right: 10px;
+  }
+}
+@media (min-width: 1280px) {
+  .habit__list-item:nth-child(even) {
+    margin-right: 10px;
+  }
 }
 .habit__none {
   text-align: center;
   margin-top: 20px;
   font-size: 12px;
+}
+@media (min-width: 524px) {
+  .habit__none {
+    font-size: 14px;
+  }
+}
+@media (min-width: 1280px) {
+  .habit__none {
+    font-size: 24px;
+  }
 }
 .habit__panel {
   display: flex;
@@ -115,9 +215,34 @@ a {
 .habit__panel svg {
   width: 30px;
   height: 30px;
+  transition: all 0.3s ease-in-out;
+}
+@media (min-width: 1280px) {
+  .habit__panel svg {
+    width: 45px;
+    height: 45px;
+  }
+}
+.habit__panel svg:hover {
+  fill: grey;
 }
 .habit__panel__title {
   font-size: 18px;
+}
+@media (min-width: 768px) {
+  .habit__panel__title {
+    font-size: 20px;
+  }
+}
+@media (min-width: 1280px) {
+  .habit__panel__title {
+    font-size: 34px;
+  }
+}
+@media (min-width: 524px) {
+  .habit__panel {
+    margin-bottom: 10px;
+  }
 }
 
 .modal {
@@ -157,7 +282,6 @@ a {
   transition: all 0.3s ease-in-out;
 }
 .modal__content button {
-  width: 100px;
   padding: 10px;
   margin: 0 auto;
   margin-top: 20px;
@@ -167,6 +291,18 @@ a {
   font-size: 15px;
   color: white;
   background-color: blue;
+}
+@media (min-width: 768px) {
+  .modal__content {
+    width: 500px;
+  }
+  .modal__content input {
+    font-size: 20px;
+  }
+  .modal__content button {
+    padding: 15px;
+    font-size: 20px;
+  }
 }
 
 .footer {

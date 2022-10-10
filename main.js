@@ -42,8 +42,6 @@ window.addEventListener('DOMContentLoaded', function () {
   function addHabit(enter) {
     var habit = $('input').val()
 
-    var animHabit = gsap.timeline({paused:true});
-
     if (habit) {
       $('input').removeClass('error');
 
@@ -151,12 +149,6 @@ window.addEventListener('DOMContentLoaded', function () {
     } else {
       $('input').addClass('error');
     }
-
-    animHabit.to('.habit__list-item', {duration: .6, opacity: 1, x: 0})
-
-    setTimeout(() => {
-      animHabit.play()
-    }, 200)
   }
 
   // Удаляем привычку
